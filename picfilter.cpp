@@ -5,6 +5,13 @@
   Distributed as course material for Spring 2024
   CPSC 035: Data Structures and Algorithms
   https://tinyurl.com/25wjykh8
+
+  This program prompts the user for an image to
+  change, applies a filter to it, and puts the 
+  filtered image into a new file.
+
+  Sofie Aird
+  February 7, 2024
 */
 
 #include <iostream>
@@ -16,15 +23,40 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    // TODO: write your main program here
-    // Remember:
-    //   * The first command-line argument in argv is always the name of the
-    //     program.
-    //   * You can convert from char* to string just by assignment:
-    //         string infile = argv[1];
-    //   * You should have code that deals with the case that your
-    //     user gave you too few or too many command-line arguments.
-    // Good luck!  Remember to ask for help!
 
+    if (argc != 4) {
+      cout << "Wong amount of command-line arguments. Please enter 4" << endl;
+      return 1;
+    }
+    string filename = argv[1];
+    string filter = argv[2];
+    string new_filename = argv[3];
+    int *image = read_ppm(filename);
+    int width = ppm_width(filename);
+    int height = ppm_height(filename);
+
+    if (filter == "noRed") {
+      noRed(width, height, image);
+    } else if (filter == "noGreen") {
+      noGreen(width, height, image);
+    } else if (filter == "noBlue") {
+      noBlue(width, height, image);
+    } else if (filter == "invert") {
+      invert(width, height, image);
+    } else if (filter == "grayscale") {
+      grayscale(width, height, image);
+    } else if (filter == "flipHorizontally") {
+      flipHorizontally(width, height, image);
+    } else if (filter == "flipVertically") {
+      flipVertically(width, height, image);
+    } else {
+      cout << "Invalid filter input. Please try again." << endl;
+      return 1;
+    }
+
+    write_ppm(new_filename, width, height, image);
+
+    
+    delete [] image;
     return 0;
 }

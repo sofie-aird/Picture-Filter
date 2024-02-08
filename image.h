@@ -7,6 +7,8 @@
   Distributed as course material for Spring 2024
   CPSC 035: Data Structures and Algorithms
   https://tinyurl.com/25wjykh8
+
+  This file contains declarations of each filter function.
 */
 
 /**
@@ -30,4 +32,52 @@ int pixelToIndex(int width, int x, int y);
  */
 void noRed(int width, int height, int* ppm);
 
-// TODO: write your other image transformation headers here
+/**
+* A function which removes the green from an image.
+* @param width The width of the image to transform.
+* @param height The height of the image to transform.
+* @param ppm The PPM image to transform.
+*/
+void noGreen(int width, int height, int* ppm);
+
+/**
+* A function which removes the blue from an image.
+* @param width The width of the image to transform.
+* @param height The height of the image to transform.
+* @param ppm The PPM image to transform.
+*/
+void noBlue(int width, int height, int* ppm);
+
+/**
+* A function which inverts the colors of an image.
+* @param width The width of the image to transform.
+* @param height The height of the image to transform.
+* @param ppm The PPM image to transform.
+*/
+void invert(int width, int height, int* ppm);
+
+/**
+* A function which displays the image in shades of gray.
+* @param width The width of the image to transform.
+* @param height The height of the image to transform.
+* @param ppm The PPM image to transform.
+*/
+void grayscale(int width, int height, int* ppm);
+
+/**
+* A function which mirrors the origial image.
+* @param width The width of the image to transform.
+* @param height The height of the image to transform.
+* @param ppm The PPM image to transform.
+*/
+void flipHorizontally(int width, int height, int* ppm);
+
+/**
+* A function which turns the original image upside-down.
+* @param width The width of the image to transform.
+* @param height The height of the image to transform.
+* @param ppm The PPM image to transform.
+*/
+void flipVertically(int width, int height, int* ppm);
+
+
